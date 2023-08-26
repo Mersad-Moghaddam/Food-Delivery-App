@@ -12,15 +12,18 @@ class _HomePageState extends State<HomePage> {
   List<String> categories = ["Pizza", "Burgers", "Kebab", "Desert", "Salad"];
   List<dynamic> foods = [
     {
-      "image": "assets/images/one.jpg",
+      "image":
+          "/Users/mersad/Desktop/Flutter/Flutter-Food-Delivery/food_delivery/lib/assets/images/pizza1.jpg",
       "isFavorite": false,
     },
     {
-      "image": "assets/images/two.jpg",
+      "image":
+          "/Users/mersad/Desktop/Flutter/Flutter-Food-Delivery/food_delivery/lib/assets/images/pizza2.jpg",
       "isFavorite": false,
     },
     {
-      "image": "assets/images/three.jpg",
+      "image":
+          "/Users/mersad/Desktop/Flutter/Flutter-Food-Delivery/food_delivery/lib/assets/images/pizza3.jpg",
       "isFavorite": false,
     }
   ];
@@ -128,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
+                    SizedBox(
                       height: 50,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -137,9 +140,41 @@ class _HomePageState extends State<HomePage> {
                               1,
                               makeCategory(
                                   title: categories[index], index: index))),
+                    ),
+                    const SizedBox(
+                      height: 20,
                     )
                   ],
                 ),
+              ),
+              FadeAnimation(
+                  1,
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      "Free Delivery",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[800]),
+                    ),
+                  )),
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: foods.length,
+                  itemBuilder: (context, index) => FadeAnimation(
+                      1,
+                      makeItem(
+                          image: foods[index]["image"],
+                          isFavorite: foods[index]["isFavorite"],
+                          index: index)),
+                ),
+              )),
+              const SizedBox(
+                height: 50,
               )
             ],
           ),
